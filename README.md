@@ -1,8 +1,12 @@
-# React + Vite
+Dashboard de Cotações de Moedas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+Uma aplicação web em React que exibe cotações de moedas em tempo real, permitindo ao usuário selecionar quais moedas deseja visualizar por meio de checkboxes em uma barra lateral expansível. As cotações são obtidas via API do AwesomeAPI.
+
+Funcionalidades
+Seleção de Moedas: Escolha as moedas desejadas (ex.: USD, EUR, BRL) usando checkboxes em uma barra lateral interativa.
+Exibição Dinâmica: Cards atualizados com as cotações mais recentes das moedas selecionadas.
+Design Responsivo: Interface adaptável para diferentes tamanhos de tela.
+Animações: Barra lateral expansível com transições suaves.
