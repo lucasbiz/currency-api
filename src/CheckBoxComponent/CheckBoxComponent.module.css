@@ -1,0 +1,14 @@
+.checkbox{
+    width: 200px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.checkbox > label {
+    display: flex;
+    cursor: pointer;
+    
+}
+
+.checkbox input {
+    cursor: pointer;
+}
