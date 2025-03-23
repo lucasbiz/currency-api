@@ -1,7 +1,13 @@
+
 .menuButton {
     cursor: pointer;
     margin-right: 10px;
     color: white;
+}
+
+.menuButton:hover {
+    color: rgb(148, 146, 146);
+    transition: .3s ease;
 }
 
 .currencySelectorContainer {
@@ -14,11 +20,12 @@
     padding: 10px 13px 10px 10px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.164);
     height: 100vh;
-    background-color: rgba(73, 43, 206, 0.932);
+    background-color: var(--sidebar-color);
     border-radius: 10px;
     overflow: hidden;
     opacity: 1;
     position: absolute;
+    border:1px solid var(--card-outline-color); 
 
 }
 
