@@ -3,6 +3,8 @@ import NavbarComponent from './NavbarComponent/NavbarComponent'
 import './App.css'
 import { useEffect, useReducer } from 'react'
 import { CurrencyListContext, CurrencyListDispatchContext } from './CurrenciesContext'
+import SwitchThemeComponent from './SwitchThemeComponent/SwitchThemeComponent';
+import { useState } from 'react'
 
 const initializeCurrencies = () => {
 
@@ -74,12 +76,18 @@ function currencyListReducer(availableCurrencies, action) {
 
 function App() {
 
+  const [theme, setTheme] = useState('light');
+
   const [availableCurrencies, dispatch] = useReducer(currencyListReducer, [], initializeCurrencies);
 
   useEffect(() => {
-    localStorage.setItem("currencys", JSON.stringify(availableCurrencies));
+    localStorage.setItem("currencies", JSON.stringify(availableCurrencies));
     console.log(availableCurrencies);
   }, [availableCurrencies]);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme); // Aplica o tema ao <html>
+  }, [theme]);
 
 
   let checkedCurrencies = availableCurrencies.filter((c) => c.isChecked == true )
@@ -89,12 +97,18 @@ function App() {
       
       <CurrencyListContext.Provider value={availableCurrencies}>
         <CurrencyListDispatchContext.Provider value={dispatch}>
+
           <NavbarComponent className="navbar" currencyList={availableCurrencies} />
+
         </CurrencyListDispatchContext.Provider>
       </CurrencyListContext.Provider>
 
       <div className="currency-container">
         {checkedCurrencies.map((c) => <CardComponent key={c.code} currency={c}></CardComponent>)}
+      </div>
+
+      <div className="switch-theme">
+        <SwitchThemeComponent switchTheme={setTheme} theme={theme}></SwitchThemeComponent>
       </div>
     
     

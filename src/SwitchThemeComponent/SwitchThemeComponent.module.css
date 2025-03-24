@@ -1,0 +1,47 @@
+
+.darkThemeButton {
+    background-color: #11164e;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s ease;
+    cursor: pointer;
+
+
+}
+
+.darkThemeButton:hover { 
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.123);
+    width: 32px;
+    height: 32px;
+    transition: .3s ease;
+
+}
+
+.lightThemeButton {
+    background-color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+    transition: .3s ease;
+    cursor: pointer;
+
+
+}
+
+.lightThemeButton:hover { 
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.123);
+    width: 32px;
+    height: 32px;
+    transition: .3s ease;
+
+
+}

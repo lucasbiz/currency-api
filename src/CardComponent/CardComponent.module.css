@@ -6,10 +6,10 @@
     width: 200px;
     height: 300px;
     border-radius: 20px;
-    background: #ffffff;
+    background: var(--card-background-color);
     position: relative;
     padding: 20px;
-    border: 2px solid #c3c6ce;
+    border: 1px solid var(--card-outline-color);
     transition: 0.5s ease-out;
     overflow: visible;
     margin: 20px;

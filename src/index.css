@@ -1,7 +1,38 @@
+
+:root {
+    /* Tema padrão (Claro) */
+    --background-color: #e8eaf6;
+    --sidebar-color: #283593;
+    --card-title-color: #000000;
+    --card-description-color: #797979;
+    --card-background-color: #ffffff;
+    --sidebar-font-color: #ffffff;
+    --card-outline-color: #c3c6ce;
+}
+
+[data-theme ="dark"] {
+    --background-color: #0E1217;
+    --sidebar-color: #192029;
+    --card-title-color: #ffffff;
+    --card-description-color: #c3c6ce;
+    --card-background-color: #0E1217;
+    --sidebar-font-color: #ffffff;
+    --card-outline-color: #313133;
+
+}
+
+
 body {
     margin: 0px;
     height: 100%;
     height: 100vh;
-    background-color: azure;
+    background-color: var(--background-color);
+    transition: .7s ease;
 
+}
+
+.switch-theme {
+    margin: 10px;
+    display: flex;
+    height: 30px;
 }
