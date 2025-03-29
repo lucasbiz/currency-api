@@ -8,7 +8,7 @@ import { useState } from 'react'
 
 const initializeCurrencies = () => {
 
-  const stored = localStorage.getItem("currencys");
+  const stored = localStorage.getItem("currencies");
   if (!stored) {
     const initialCurrencies = [
       { code: "USD-BRL", name: "Dólar Americano/Real Brasileiro", isChecked: false },
@@ -27,7 +27,7 @@ const initializeCurrencies = () => {
       { code: "ETH-BRL", name: "Ethereum/Real Brasileiro", isChecked: false },
       { code: "XRP-BRL", name: "XRP/Real Brasileiro", isChecked: false }
     ];
-    localStorage.setItem("currencys", JSON.stringify(initialCurrencies));
+    localStorage.setItem("currencies", JSON.stringify(initialCurrencies));
     return initialCurrencies;
   }
   return JSON.parse(stored);

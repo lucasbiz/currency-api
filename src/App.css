@@ -12,5 +12,7 @@
 
 .main {
     display: flex;
+    min-height: 600px;
+
 }
 
