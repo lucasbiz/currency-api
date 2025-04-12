@@ -35,7 +35,7 @@ function CurrencyComponent (props) {
 
         let intervalCurrency = setInterval(() => {
             fetchCurrency();
-        }, 10000);
+        }, 60000);
 
 
         return () => {
