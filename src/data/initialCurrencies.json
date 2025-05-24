@@ -1,0 +1,18 @@
+[
+    { "code": "USD-BRL", "name": "Dólar Americano/Real Brasileiro", "isChecked": false },
+    { "code": "USD-BRLT", "name": "Dólar Americano/Real Brasileiro Turismo", "isChecked": false },
+    { "code": "CAD-BRL", "name": "Dólar Canadense/Real Brasileiro", "isChecked": false },
+    { "code": "EUR-BRL", "name": "Euro/Real Brasileiro", "isChecked": false },
+    { "code": "GBP-BRL", "name": "Libra Esterlina/Real Brasileiro", "isChecked": false },
+    { "code": "ARS-BRL", "name": "Peso Argentino/Real Brasileiro", "isChecked": false },
+    { "code": "BTC-BRL", "name": "Bitcoin/Real Brasileiro", "isChecked": false },
+    { "code": "LTC-BRL", "name": "Litecoin/Real Brasileiro", "isChecked": false },
+    { "code": "JPY-BRL", "name": "Iene Japonês/Real Brasileiro", "isChecked": false },
+    { "code": "CHF-BRL", "name": "Franco Suíço/Real Brasileiro", "isChecked": false },
+    { "code": "AUD-BRL", "name": "Dólar Australiano/Real Brasileiro", "isChecked": false },
+    { "code": "CNY-BRL", "name": "Yuan Chinês/Real Brasileiro", "isChecked": false },
+    { "code": "ILS-BRL", "name": "Novo Shekel Israelense/Real Brasileiro", "isChecked": false },
+    { "code": "ETH-BRL", "name": "Ethereum/Real Brasileiro", "isChecked": false },
+    { "code": "XRP-BRL", "name": "XRP/Real Brasileiro", "isChecked": false }
+  ]
+  

@@ -4,7 +4,14 @@ A React web application that displays real-time currency exchange rates, allowin
 
 ## Features
 
-- **Currency Selection:** Choose desired currencies (e.g., USD, EUR, BRL) using checkboxes in an interactive sidebar.
-- **Dynamic Display:** Cards updated with the latest exchange rates for the selected currencies.
-- **Responsive Design:** Interface adaptable to different screen sizes.
-- **Animations:** Expandable sidebar with smooth transitions.
+- Fetches currency data from [AwesomeAPI](https://economia.awesomeapi.com.br) every 60 seconds  
+- User can select/deselect currencies to display  
+- Global state management with React Context API  
+- Last data update timestamp shown globally  
+
+## Technologies
+
+- React 18+ with Hooks (`useState`, `useEffect`, `useContext`, `useRef`)  
+- CSS Modules  
+- Vite or Create React App (for bundling)  
+- Public currency API

@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect, useRef } from "react";
 import styles from "./NavbarComponent.module.css"
 import CheckBoxComponent from "../CheckBoxComponent/CheckBoxComponent";
-import { CurrencyListContext, CurrencyListDispatchContext } from "../CurrenciesContext";
+import { CurrencyListContext, CurrencyListDispatchContext } from "../../CurrenciesContext";
 
 
 function NavbarComponent () {
@@ -42,16 +42,14 @@ function NavbarComponent () {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-        // Verifica se o menu está expandido e se o clique foi fora do menu
+
             if (isExpanded && menuRef.current && !menuRef.current.contains(event.target)) {
                 expandMenu();
             }
         };
 
-        // Adiciona o listener ao documento
         document.addEventListener('mousedown', handleClickOutside);
 
-        // Remove o listener quando o componente é desmontado ou o estado muda
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };

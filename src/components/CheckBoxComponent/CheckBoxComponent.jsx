@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import styles from "./CheckBoxComponent.module.css"
-import { CurrencyListDispatchContext } from "../CurrenciesContext";
+import { CurrencyListDispatchContext } from '../../CurrenciesContext';
 
 function CheckBoxComponent (props) {
 
