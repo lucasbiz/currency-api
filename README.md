@@ -16,7 +16,3 @@ A React web application that displays real-time currency exchange rates, allowin
 - Vite or Create React App (for bundling)  
 - Public currency API
 
-## Project Structure
-
-![image](https://github.com/user-attachments/assets/376d0f34-d097-495f-896a-561cd6741dfd)
-
