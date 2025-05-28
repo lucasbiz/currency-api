@@ -6,7 +6,7 @@ import { CurrencyListContext, CurrencyListDispatchContext, LastTimeUpdatedContex
 import SwitchThemeComponent from './components/SwitchThemeComponent/SwitchThemeComponent';
 import { currencyListReducer } from './reducers/currencyListReducer';
 import { initializeCurrencies } from './utils/initializeCurrencies';
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 
 function App() {
@@ -54,7 +54,7 @@ function App() {
             Última atualização: {lastUpdated.toLocaleString()}
           </div>)}
       </LastTimeUpdatedContext.Provider>
-
+      <SpeedInsights />
     </div>
   )
 }
