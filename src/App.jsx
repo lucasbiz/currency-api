@@ -1,20 +1,26 @@
-import CardComponent from './components/CardComponent/CardComponent'
-import NavbarComponent from './components/NavbarComponent/NavbarComponent'
-import './App.css'
 import { useEffect, useReducer, useState } from 'react'
+import './App.css'
 import { CurrencyListContext, CurrencyListDispatchContext, LastTimeUpdatedContext } from './CurrenciesContext';
-import SwitchThemeComponent from './components/SwitchThemeComponent/SwitchThemeComponent';
 import { currencyListReducer } from './reducers/currencyListReducer';
 import { initializeCurrencies } from './utils/initializeCurrencies';
-
+import Header from './components/Header/Header';
+import Sidebar from './components/Sidebar/Sidebar';
+import CurrencyCard from './components/CurrencyCard/CurrencyCard';
+import EmptyState from './components/EmptyState/EmptyState';
+import SkeletonGrid from './components/Skeleton/Skeleton';
 
 function App() {
-
-  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(() => {
+    const stored = localStorage.getItem("theme");
+    if (stored) return stored;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  });
 
   const [availableCurrencies, dispatch] = useReducer(currencyListReducer, [], initializeCurrencies);
-
   const [lastUpdated, setLastUpdated] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [initialLoading, setInitialLoading] = useState(true);
 
   useEffect(() => {
     localStorage.setItem("currencies", JSON.stringify(availableCurrencies));
@@ -25,35 +31,60 @@ function App() {
     localStorage.setItem("theme", theme);
   }, [theme]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => setInitialLoading(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
-  let checkedCurrencies = availableCurrencies.filter((c) => c.isChecked == true )
+  const checkedCurrencies = availableCurrencies
+    .filter(c => c.isChecked)
+    .sort((a, b) => {
+      if (a.isFavorited && !b.isFavorited) return -1;
+      if (!a.isFavorited && b.isFavorited) return 1;
+      return 0;
+    });
 
   return (
-    <div className= "main">
-      <LastTimeUpdatedContext.Provider value={{ lastUpdated, setLastUpdated }}>
-        <CurrencyListContext.Provider value={availableCurrencies}>
-          <CurrencyListDispatchContext.Provider value={dispatch}>
+    <LastTimeUpdatedContext.Provider value={{ lastUpdated, setLastUpdated }}>
+      <CurrencyListContext.Provider value={availableCurrencies}>
+        <CurrencyListDispatchContext.Provider value={dispatch}>
 
-            <NavbarComponent className="navbar" currencyList={availableCurrencies} />
+          <Header
+            theme={theme}
+            setTheme={setTheme}
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            sidebarOpen={sidebarOpen}
+            setSidebarOpen={setSidebarOpen}
+          />
 
-          </CurrencyListDispatchContext.Provider>
-        </CurrencyListContext.Provider>
+          <div className="appLayout">
+            <Sidebar
+              open={sidebarOpen}
+              searchTerm={searchTerm}
+              onClose={() => setSidebarOpen(false)}
+            />
 
-        <div className="currency-container">
-          {checkedCurrencies.map((c) => <CardComponent key={c.code} currency={c}></CardComponent>)}
-        </div>
+            <main className={`mainArea ${sidebarOpen ? 'sidebarOpen' : ''}`}>
+              {initialLoading && checkedCurrencies.length > 0 ? (
+                <div className="currencyGrid">
+                  <SkeletonGrid count={Math.min(checkedCurrencies.length, 6)} />
+                </div>
+              ) : checkedCurrencies.length === 0 ? (
+                <EmptyState />
+              ) : (
+                <div className="currencyGrid">
+                  {checkedCurrencies.map((c) => (
+                    <CurrencyCard key={c.code} currency={c} />
+                  ))}
+                </div>
+              )}
+            </main>
+          </div>
 
-        <div className="switch-theme">
-          <SwitchThemeComponent switchTheme={setTheme} theme={theme}></SwitchThemeComponent>
-        </div>
-      
-        
-          {lastUpdated && (
-          <div className="last-updated">
-            Última atualização: {lastUpdated.toLocaleString()}
-          </div>)}
-      </LastTimeUpdatedContext.Provider>
-    </div>
+        </CurrencyListDispatchContext.Provider>
+      </CurrencyListContext.Provider>
+    </LastTimeUpdatedContext.Provider>
   )
 }
 
